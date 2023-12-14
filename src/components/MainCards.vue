@@ -1,10 +1,18 @@
 <script setup>
+  import useAPI from '@/composables/useApi'
   import MainCardsSingle from '@/components/MainCardsSingle.vue'
+
+  const { recipes } = useAPI()
 </script>
 
 <template>
   <div class="sub-wrapper">
-    <MainCardsSingle v-for="n in 20" :key="n" />
+    <Suspense>
+      <MainCardsSingle v-for="recipe in recipes" :key="recipe.recipeID" :recipe="recipe" />
+      <template #fallback>
+        <div>Loading...</div>
+      </template>
+    </Suspense>
   </div>
 </template>
 

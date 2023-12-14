@@ -1,13 +1,31 @@
 <script setup>
+  import { ref } from 'vue'
   import { faker } from '@faker-js/faker'
 
-  const firstName = faker.name.firstName()
-  const lastName = faker.name.lastName()
-  const fullName = `${firstName} ${lastName}`
+  import useAPI from '@/composables/useApi'
 
   const selectCard = () => {
-    console.log(`${fullName} selected`)
+    console.log(`${props.recipe.name} selected`)
   }
+
+  const props = defineProps({
+    recipe: {
+      type: Object,
+      required: true,
+      default: () => {
+        return {
+          createdAt: '2022-01-01',
+          cookTime: 'Forever',
+          recipeId: '123',
+          foodType: 'Food',
+          name: 'Sandwich',
+          ingredients: 'ingredients',
+          instructions: 'instructions',
+          updatedAt: '2022-01-01',
+        }
+      },
+    },
+  })
 </script>
 
 <template>
@@ -16,9 +34,9 @@
       <img :src="faker.internet.avatar()" alt="" srcset="" />
     </div>
     <div class="card-details">
-      <p class="card-details-name">{{ fullName }}</p>
-      <p class="card-details-job">{{ faker.name.jobTitle() }}, {{ faker.name.jobArea() }}</p>
-      <p class="card-details-quote">"{{ faker.lorem.paragraph() }}"</p>
+      <p class="card-details-name">{{ props.recipe.name }}</p>
+      <p class="card-details-cookTime">{{ props.recipe.cookTime }}</p>
+      <p class="card-details-foodType">{{ props.recipe.foodType }}</p>
     </div>
   </div>
 </template>
