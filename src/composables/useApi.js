@@ -28,8 +28,8 @@ const getRecipes = async () => {
   loading.value = false
 }
 
-const useAPI = () => {
+const useApi = () => {
   return { recipes, pages, activePage, loading, pageSize, getRecipes }
 }
 
-export default useAPI
+export default useApi

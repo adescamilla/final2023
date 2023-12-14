@@ -1,8 +1,6 @@
 <script setup>
   import { ref } from 'vue'
-  import { faker } from '@faker-js/faker'
-
-  import useAPI from '@/composables/useApi'
+  import useApi from '@/composables/useApi'
 
   const selectCard = () => {
     console.log(`${props.recipe.name} selected`)
@@ -16,7 +14,7 @@
         return {
           createdAt: '2022-01-01',
           cookTime: 'Forever',
-          recipeId: '123',
+          recipeID: '123',
           foodType: 'Food',
           name: 'Sandwich',
           ingredients: 'ingredients',
@@ -29,16 +27,17 @@
 </script>
 
 <template>
+    <RouterLink v-if="props.recipe.recipeID" :to="`/api/recipes/${props.recipe.recipeID}`">
   <div class="card" @click="selectCard">
     <div class="card-image">
-      <img :src="faker.internet.avatar()" alt="" srcset="" />
+      <img :src="props.recipe.image" alt="" srcset="" />
     </div>
     <div class="card-details">
-      <p class="card-details-name">{{ props.recipe.name }}</p>
-      <p class="card-details-cookTime">{{ props.recipe.cookTime }}</p>
-      <p class="card-details-foodType">{{ props.recipe.foodType }}</p>
+      <p class="card-details-recipe font-poppins">{{ props.recipe.name }}</p>
+      <p class="card-details-type font-poppins">{{ props.recipe.foodType }}</p>  
     </div>
   </div>
+</RouterLink>
 </template>
 
 <style scoped lang="postcss">

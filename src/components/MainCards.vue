@@ -1,8 +1,7 @@
 <script setup>
-  import useAPI from '@/composables/useApi'
+  import useApi from '@/composables/useApi'
   import MainCardsSingle from '@/components/MainCardsSingle.vue'
-
-  const { recipes } = useAPI()
+  const { recipes } = useApi()
 </script>
 
 <template>

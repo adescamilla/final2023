@@ -5,9 +5,9 @@
   import MainCards from '@/components/MainCards.vue'
   import MainPagination from '@/components/MainPagination.vue'
 
-  import useAPI from '@/composables/useApi'
+  import useApi from '@/composables/useApi'
 
-  const { getRecipes, loading } = useAPI()
+  const { getRecipes, loading } = useApi()
 
   onMounted(async () => {
     await getRecipes()
