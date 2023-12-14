@@ -4,7 +4,7 @@
 
   const { isAuthenticated, logout, user } = useAuth()
 
-  const brand = ref(import.meta.env.VITE_APP_NAME)
+  const brand = ref('🍲 delisHAUS')
 </script>
 
 <template>
